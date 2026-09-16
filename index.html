@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RLS Rental</title>
+<meta name="description" content="RLS Rental — noleggio di vetture di lusso e servizio con autista a Roma. Berline executive, SUV, gran turismo e van VIP, disponibili 24/7.">
+<meta name="theme-color" content="#07080A">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="RLS Rental">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="RLS Rental">
+<meta property="og:title" content="RLS Rental · Noleggio luxury e auto con autista a Roma">
+<meta property="og:description" content="Berline executive, SUV, gran turismo e van VIP. Guida libera o con autista, consegna dove sei, 24/7.">
+<meta property="og:image" content="https://rlsrental.github.io/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://rlsrental.github.io/">
+<meta property="og:url" content="https://rlsrental.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap">
+<style>
+:root{
+  color-scheme: dark;
+  --ink:#07080A;
+  --graphite:#111216;
+  --graphite-2:#18191E;
+  --label:#F5F5F7;
+  --label-2:rgba(235,235,245,.64);
+  --label-3:rgba(235,235,245,.38);
+  --sep:rgba(84,84,88,.42);
+  --hair:rgba(255,255,255,.12);
+  --champagne:#D9C4A1;
+  --champagne-deep:#B89C6E;
+  --on-champagne:#15120C;
+  --live:#30D158;
+  --glass:rgba(30,31,36,.52);
+  --glass-strong:rgba(22,23,27,.78);
+  --r-xl:34px; --r-lg:26px; --r-md:18px; --r-sm:12px;
+  --gutter:clamp(16px,4vw,48px);
+  --maxw:1240px;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Geist",system-ui,"Segoe UI",Roboto,sans-serif;
+  --spring:cubic-bezier(.32,.72,0,1);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--label);font-family:var(--font);font-size:17px;line-height:1.47;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--champagne);outline-offset:3px;border-radius:10px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--champagne)}
+.large-title{font-size:clamp(40px,6.4vw,84px);line-height:1.02;letter-spacing:-.045em;font-weight:650;margin:0;text-wrap:balance}
+.title-2{font-size:clamp(32px,4.2vw,56px);line-height:1.06;letter-spacing:-.035em;font-weight:650;margin:0;text-wrap:balance}
+.lead{font-size:clamp(17px,1.5vw,21px);line-height:1.45;color:var(--label-2);max-width:40ch;margin:0;letter-spacing:-.015em}
+.muted{color:var(--label-2)}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding-inline:24px;border-radius:999px;border:0;cursor:pointer;font-size:16px;font-weight:600;letter-spacing:-.01em;transition:transform .35s var(--spring),background-color .25s,filter .25s;white-space:nowrap}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--champagne);color:var(--on-champagne)}
+.btn-primary:hover{filter:brightness(1.06)}
+.btn-glass{background:rgba(255,255,255,.1);color:var(--label);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);box-shadow:inset 0 0 0 .5px var(--hair)}
+.btn-glass:hover{background:rgba(255,255,255,.16)}
+.btn svg{width:18px;height:18px}
+
+/* ---------- dynamic island nav ---------- */
+.island-bar{position:fixed;left:0;right:0;top:0;z-index:50;display:flex;justify-content:center;padding-top:calc(env(safe-area-inset-top,0px) + 14px);padding-inline:16px;pointer-events:none}
+.island{pointer-events:auto;display:flex;align-items:center;gap:6px;background:#000;border-radius:999px;padding:6px 6px 6px 16px;box-shadow:0 10px 40px rgba(0,0,0,.45),inset 0 0 0 .5px rgba(255,255,255,.08);max-width:100%;transition:padding .5s var(--spring)}
+.island__brand{display:flex;align-items:center;gap:10px;font-weight:650;letter-spacing:-.02em;font-size:15px;white-space:nowrap}
+.mark{width:22px;height:22px;border-radius:7px;background:linear-gradient(145deg,#E9DCC4,#9E8458);display:grid;place-items:center;color:#17130B;font-size:13px;font-weight:800;letter-spacing:0}
+.island__status{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--label-2);padding-inline:10px 4px;white-space:nowrap;min-width:0}
+.island__status b{font-weight:500;color:var(--label);overflow:hidden;text-overflow:ellipsis}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 rgba(48,209,88,.6);animation:pulse 2.2s infinite;flex:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(48,209,88,.55)}70%{box-shadow:0 0 0 8px rgba(48,209,88,0)}100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}}
+.island__links{display:grid;grid-template-columns:0fr;transition:grid-template-columns .55s var(--spring)}
+.island__links>div{overflow:hidden;display:flex;align-items:center;gap:2px;white-space:nowrap}
+.island__links a{font-size:14px;color:var(--label-2);padding:8px 12px;border-radius:999px;transition:color .2s,background .2s}
+.island__links a:hover{color:var(--label);background:rgba(255,255,255,.08)}
+.island:hover .island__links,.island:focus-within .island__links,.island.is-open .island__links{grid-template-columns:1fr}
+.island .btn{height:36px;padding-inline:16px;font-size:14px}
+.island__menu{display:none;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.1);cursor:pointer;place-items:center}
+.island__menu svg{width:16px;height:16px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;background:var(--ink)}
+.hero__media{position:absolute;inset:0;z-index:-1}
+.hero__media img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;animation:settle 2.8s var(--spring) both}
+@keyframes settle{from{transform:scale(1.07)}to{transform:scale(1)}}
+.hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,8,10,.92) 0%,rgba(7,8,10,.55) 34%,rgba(7,8,10,0) 60%),linear-gradient(0deg,var(--ink) 0%,rgba(7,8,10,0) 30%)}
+.hero__inner{min-height:clamp(640px,92vh,900px);display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(40px,7vh,72px);padding-block:120px 36px}
+.hero__copy{display:flex;flex-direction:column;gap:22px;max-width:620px}
+.hero__copy .large-title span{color:var(--champagne)}
+.hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.rise{animation:rise 1.1s var(--spring) both}
+.rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}.rise.d3{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(18px);opacity:.35}to{transform:none;opacity:1}}
+
+/* booking widget */
+.booker{background:var(--glass);-webkit-backdrop-filter:blur(30px) saturate(170%);backdrop-filter:blur(30px) saturate(170%);border-radius:var(--r-xl);box-shadow:inset 0 0 0 .5px var(--hair),0 30px 80px rgba(0,0,0,.4);padding:14px;display:flex;flex-direction:column;gap:12px}
+.booker__top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:4px 6px 0}
+.booker__note{font-size:13px;color:var(--label-2);display:flex;align-items:center;gap:8px}
+.seg{position:relative;display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;background:rgba(118,118,128,.24);border-radius:12px;padding:2px}
+.seg button{position:relative;z-index:1;border:0;background:none;height:34px;padding-inline:18px;font-size:14px;font-weight:600;letter-spacing:-.01em;color:var(--label-2);cursor:pointer;border-radius:10px;transition:color .25s;white-space:nowrap}
+.seg button[aria-pressed="true"]{color:var(--label)}
+.seg__thumb{position:absolute;top:2px;bottom:2px;left:2px;border-radius:10px;background:rgba(120,120,128,.55);box-shadow:0 3px 8px rgba(0,0,0,.25),inset 0 0 0 .5px rgba(255,255,255,.12);transition:transform .45s var(--spring),width .45s var(--spring)}
+.fields{display:grid;grid-template-columns:1.25fr 1fr 1fr 1.15fr auto;gap:2px;background:rgba(0,0,0,.25);border-radius:22px;padding:2px;align-items:stretch}
+.field{position:relative;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:12px 16px;background:rgba(255,255,255,.055);min-width:0}
+.fields .field:first-child{border-radius:20px 6px 6px 20px}
+.field label{font-size:12px;font-weight:500;color:var(--label-2);letter-spacing:0}
+.field input,.field select{appearance:none;-webkit-appearance:none;background:none;border:0;padding:0;font-size:16px;font-weight:600;letter-spacing:-.015em;width:100%;min-width:0;outline:none;cursor:pointer;color-scheme:dark}
+.field select option{background:#1c1c1e;color:var(--label)}
+.field:focus-within{background:rgba(255,255,255,.1)}
+.fields .btn{height:auto;min-height:64px;border-radius:6px 20px 20px 6px;padding-inline:28px}
+
+/* ---------- facts strip ---------- */
+.facts{border-block:.5px solid var(--sep)}
+.facts ul{list-style:none;margin:0;padding-block:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.facts li{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--label-2);line-height:1.3}
+.facts li strong{display:block;color:var(--label);font-weight:600}
+.facts svg{width:26px;height:26px;flex:none;color:var(--champagne)}
+
+/* ---------- sections ---------- */
+.section{padding-block:clamp(72px,11vw,140px)}
+.section__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.section__head>div:first-child{display:flex;flex-direction:column;gap:14px;max-width:700px}
+
+/* fleet */
+.chips{display:flex;gap:8px;flex-wrap:wrap;flex-direction:row}
+.chip{height:36px;padding-inline:16px;border-radius:999px;border:0;background:rgba(118,118,128,.2);color:var(--label-2);font-size:14px;font-weight:600;cursor:pointer;transition:background .25s,color .25s}
+.chip[aria-pressed="true"]{background:var(--label);color:var(--ink)}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,calc((100% - 40px)/3));gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-width:none;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);scroll-padding-inline:var(--gutter)}
+.rail::-webkit-scrollbar{display:none}
+.car{scroll-snap-align:start;background:var(--graphite);border-radius:var(--r-xl);overflow:hidden;display:flex;flex-direction:column;box-shadow:inset 0 0 0 .5px rgba(255,255,255,.07);cursor:pointer;transition:transform .5s var(--spring);text-align:left;border:0;padding:0}
+.car:hover{transform:translateY(-4px)}
+.car:active{transform:scale(.98)}
+.car__img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000}
+.car__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--spring)}
+.car:hover .car__img img{transform:scale(1.04)}
+.car__badge{position:absolute;top:14px;left:14px;font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 0 0 .5px var(--hair)}
+.car__body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
+.car__name{font-size:23px;font-weight:650;letter-spacing:-.03em;margin:0;line-height:1.15}
+.car__like{font-size:14px;color:var(--label-3);margin:2px 0 0}
+.specs{display:flex;gap:18px;font-size:14px;color:var(--label-2);flex-wrap:wrap}
+.specs span{display:flex;align-items:center;gap:6px}
+.specs svg{width:16px;height:16px;opacity:.8}
+.car__foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px;border-top:.5px solid var(--sep)}
+.price{font-size:14px;color:var(--label-2)}
+.price b{font-size:20px;color:var(--label);font-weight:650;letter-spacing:-.02em}
+.plus{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center}
+.plus svg{width:15px;height:15px}
+.rail-note{font-size:13px;color:var(--label-3);margin-top:10px}
+
+/* con autista */
+.autista{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.autista__media{position:relative;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/4.3;background:#000}
+.autista__media img{width:100%;height:100%;object-fit:cover;object-position:58% 50%}
+.autista__live{position:absolute;left:16px;right:16px;bottom:16px;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:22px;background:var(--glass);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);box-shadow:inset 0 0 0 .5px var(--hair)}
+.autista__live .ic{width:42px;height:42px;border-radius:12px;background:var(--champagne);color:var(--on-champagne);display:grid;place-items:center;flex:none}
+.autista__live .ic svg{width:22px;height:22px}
+.autista__live small{display:block;font-size:12px;color:var(--label-2)}
+.autista__live strong{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.autista__live .eta{margin-left:auto;text-align:right}
+.autista__live .eta strong{font-size:20px}
+.autista__copy{display:flex;flex-direction:column;gap:18px}
+.list{margin-top:14px;background:var(--graphite);border-radius:var(--r-lg);overflow:hidden;box-shadow:inset 0 0 0 .5px rgba(255,255,255,.06)}
+.row{display:flex;align-items:center;gap:14px;padding:14px 16px;position:relative;width:100%;background:none;border:0;text-align:left;cursor:pointer;transition:background .2s}
+.row:hover{background:rgba(255,255,255,.04)}
+.row+.row::before{content:"";position:absolute;top:0;left:62px;right:0;border-top:.5px solid var(--sep)}
+.row .sq{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;flex:none;background:#2C2C2E;color:var(--champagne)}
+.row .sq svg{width:18px;height:18px}
+.row .t{flex:1;min-width:0}
+.row .t strong{display:block;font-size:16px;font-weight:600;letter-spacing:-.015em}
+.row .t span{display:block;font-size:14px;color:var(--label-2);line-height:1.35}
+.row .v{font-size:14px;color:var(--label-2);white-space:nowrap}
+.row .chev{width:8px;height:14px;color:var(--label-3);flex:none}
+
+/* widgets bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(190px,auto);gap:20px}
+.w{background:var(--graphite);border-radius:var(--r-xl);padding:22px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 .5px rgba(255,255,255,.06)}
+.w h3{margin:0;font-size:20px;font-weight:650;letter-spacing:-.025em;line-height:1.2}
+.w p{margin:0;font-size:15px;color:var(--label-2);line-height:1.4}
+.w .w-label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--label-3);display:flex;align-items:center;gap:6px}
+.w-detail{grid-column:span 2;grid-row:span 2;padding:0;background:#000}
+.w-detail img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.w-detail .cap{position:relative;margin-top:auto;padding:26px;background:linear-gradient(0deg,rgba(0,0,0,.85),rgba(0,0,0,0));display:flex;flex-direction:column;gap:8px}
+.w-steps{grid-column:span 2}
+.steps{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--label-2);line-height:1.4}
+.steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(217,196,161,.14);color:var(--champagne);font-size:13px;font-weight:700}
+.steps strong{color:var(--label);font-size:15px;font-weight:600}
+.big{font-size:52px;font-weight:650;letter-spacing:-.05em;line-height:1;margin-top:auto}
+.big small{font-size:17px;letter-spacing:-.01em;color:var(--label-2);font-weight:500;margin-left:4px}
+.flight{margin-top:auto;display:flex;align-items:center;gap:10px;font-size:14px}
+.flight .track{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.12);position:relative}
+.flight .track i{position:absolute;left:0;top:0;bottom:0;width:72%;border-radius:3px;background:var(--champagne)}
+.flight .track svg{position:absolute;left:72%;top:50%;width:16px;height:16px;transform:translate(-50%,-50%) rotate(90deg);color:var(--champagne)}
+.w-green .w-label i{width:7px;height:7px;border-radius:50%;background:var(--live)}
+
+/* faq */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,72px);align-items:start}
+.faq .list{margin-top:0}
+details{position:relative}
+details+details::before{content:"";position:absolute;top:0;left:18px;right:0;border-top:.5px solid var(--sep)}
+summary{list-style:none;cursor:pointer;padding:18px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:17px;font-weight:600;letter-spacing:-.015em}
+summary::-webkit-details-marker{display:none}
+summary svg{width:12px;height:12px;color:var(--label-3);transition:transform .4s var(--spring);flex:none}
+details[open] summary svg{transform:rotate(90deg)}
+details p{margin:0;padding:0 18px 20px;color:var(--label-2);font-size:15px;line-height:1.55;max-width:62ch}
+
+/* contact */
+.cta{position:relative;border-radius:var(--r-xl);overflow:hidden;padding:clamp(32px,6vw,72px);background:radial-gradient(120% 140% at 100% 0%,rgba(217,196,161,.22),rgba(217,196,161,0) 55%),var(--graphite-2);display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:end;box-shadow:inset 0 0 0 .5px rgba(255,255,255,.08)}
+.cta__actions{display:flex;flex-direction:column;gap:10px;min-width:0}
+.cta__actions .btn span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.cta__actions .btn{width:100%;height:56px;justify-content:space-between;padding-inline:22px}
+.cta__actions .btn span{display:flex;align-items:center;gap:10px}
+.cta__actions .btn small{font-weight:500;opacity:.7;font-size:14px}
+
+footer{padding-block:48px 64px;color:var(--label-3);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;border-top:.5px solid var(--sep);padding-top:28px}
+footer nav{display:flex;gap:18px;flex-wrap:wrap}
+footer a:hover{color:var(--label)}
+
+/* ---------- sheet ---------- */
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.55);opacity:0;transition:opacity .4s ease}
+.scrim.show{opacity:1}
+.sheet{position:fixed;z-index:90;left:50%;bottom:0;width:min(640px,100%);max-height:92vh;overflow:auto;transform:translate(-50%,105%);background:var(--glass-strong);-webkit-backdrop-filter:blur(40px) saturate(180%);backdrop-filter:blur(40px) saturate(180%);border-radius:var(--r-xl) var(--r-xl) 0 0;box-shadow:inset 0 .5px 0 rgba(255,255,255,.14),0 -20px 80px rgba(0,0,0,.5);transition:transform .55s var(--spring);padding:8px 20px calc(24px + env(safe-area-inset-bottom,0px));overscroll-behavior:contain}
+.sheet.show{transform:translate(-50%,0)}
+.grabber{width:38px;height:5px;border-radius:3px;background:rgba(255,255,255,.3);margin:4px auto 10px;cursor:grab}
+.sheet__head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.sheet__head h2{margin:0;font-size:22px;letter-spacing:-.03em;font-weight:650}
+.x{width:32px;height:32px;border-radius:50%;border:0;background:rgba(118,118,128,.3);cursor:pointer;display:grid;place-items:center;color:var(--label-2)}
+.x svg{width:12px;height:12px}
+.sheet__car{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.05);border-radius:20px;padding:10px;margin-bottom:16px}
+.sheet__car img{width:120px;aspect-ratio:4/3;object-fit:cover;border-radius:13px}
+.sheet__car strong{display:block;font-size:17px;letter-spacing:-.02em}
+.sheet__car span{font-size:14px;color:var(--label-2)}
+.form-list{background:rgba(255,255,255,.05);border-radius:18px;overflow:hidden;margin-block:12px 16px}
+.form-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;position:relative;min-height:50px}
+.form-row+.form-row::before{content:"";position:absolute;top:0;left:16px;right:0;border-top:.5px solid var(--sep)}
+.form-row label{font-size:16px;white-space:nowrap}
+.form-row input,.form-row select{background:rgba(118,118,128,.24);border:0;border-radius:8px;padding:6px 10px;font-size:16px;text-align:right;color-scheme:dark;min-width:0;max-width:60%}
+.form-row select option{background:#1c1c1e}
+.total{display:flex;align-items:baseline;justify-content:space-between;padding:4px 4px 16px}
+.total span{color:var(--label-2);font-size:15px}
+.total b{font-size:30px;letter-spacing:-.04em;font-weight:650}
+.sheet .btn{width:100%;height:56px}
+.fineprint{font-size:12px;color:var(--label-3);text-align:center;margin:12px 0 0}
+.toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 14px);z-index:100;transform:translate(-50%,-140%);background:#000;border-radius:999px;padding:10px 18px 10px 12px;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;box-shadow:0 10px 40px rgba(0,0,0,.5);transition:transform .6s var(--spring)}
+.toast.show{transform:translate(-50%,0)}
+.toast i{width:22px;height:22px;border-radius:50%;background:var(--live);display:grid;place-items:center;color:#000}
+.toast i svg{width:12px;height:12px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1060px){
+  .fields{grid-template-columns:1fr 1fr}
+  .fields .field:first-child{border-radius:20px 6px 6px 6px}
+  .fields .field:nth-child(2){border-radius:6px 20px 6px 6px}
+  .fields .btn{grid-column:1/-1;border-radius:6px 6px 20px 20px;min-height:56px}
+  .facts ul{grid-template-columns:repeat(2,1fr)}
+  .rail{grid-auto-columns:minmax(290px,46%)}
+  .autista,.faq,.cta{grid-template-columns:minmax(0,1fr)}
+  .bento{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:700px){
+  body{font-size:16px}
+  .island__links{display:none}
+  .island.is-open{flex-wrap:wrap;border-radius:26px;justify-content:space-between}
+  .island.is-open .island__links{display:grid;order:5;flex-basis:100%}
+  .island.is-open .island__links>div{flex-direction:column;align-items:stretch;padding-block:6px}
+  .island__menu{display:grid}
+  .island__status{display:none}
+  .hero__inner{min-height:0;padding-top:110px}
+  .hero__media{position:relative;inset:auto;height:62vw;min-height:260px;margin-top:64px}
+  .hero__media::after{background:linear-gradient(0deg,var(--ink) 0%,rgba(7,8,10,0) 45%)}
+  .hero{display:flex;flex-direction:column}
+  .hero__inner{padding-top:8px}
+  .fields{grid-template-columns:1fr}
+  .fields .field{border-radius:6px!important}
+  .fields .field:first-child{border-radius:20px 20px 6px 6px!important}
+  .facts ul{grid-template-columns:1fr}
+  .rail{grid-auto-columns:84%}
+  .bento{grid-template-columns:1fr}
+  .w-detail,.w-steps{grid-column:auto}
+  .w-detail{min-height:440px}
+  .steps{grid-template-columns:1fr}
+  .seg button{padding-inline:12px}
+  .booker__note{display:none}
+  .cta__actions .btn{font-size:15px;padding-inline:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-seat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v8a3 3 0 0 0 3 3h7"/><path d="M6 20h12"/><path d="M17 15v5M9 15v5"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="14" height="13" rx="2.5"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6" cy="6" r="1.8"/><circle cx="12" cy="6" r="1.8"/><circle cx="18" cy="6" r="1.8"/><circle cx="6" cy="18" r="1.8"/><circle cx="12" cy="18" r="1.8"/><path d="M6 8v8M12 8v8M18 8v4H6"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13c0-4 4-7 9-7s9 3 9 7"/><path d="M2.5 13h19l-1.5 3H4z"/><path d="M12 6v2"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24" fill="currentColor"><path d="M21 15.5v-1.8l-8-5V3.5a1.5 1.5 0 0 0-3 0v5.2l-8 5v1.8l8-2.5v5.2l-2 1.5v1.4l3.5-1 3.5 1v-1.4l-2-1.5V13z"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/></symbol>
+  <symbol id="i-rings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="14" r="5.5"/><circle cx="15" cy="14" r="5.5"/><path d="M10 4.5 12 3l2 1.5-2 2z" stroke-linejoin="round"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3 5 6v5.5c0 4.3 3 8 7 9.5 4-1.5 7-5.2 7-9.5V6z"/><path d="m9 12 2 2 4-4" stroke-linecap="round"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="5"/><circle cx="12" cy="8" r="1.3"/><path d="M10 13.5h4M10 16.5h4"/></symbol>
+  <symbol id="i-lang" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.3 3.5 5.3 3.5 8.5s-1 6.2-3.5 8.5c-2.5-2.3-3.5-5.3-3.5-8.5s1-6.2 3.5-8.5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3m4.6 12.3c-.2.6-1.1 1.1-1.6 1.2-.4.06-.9.1-2.9-.7-2.5-1-4-3.4-4.2-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.06.14.1.3 0 .45l-.3.5-.4.4c-.13.13-.27.28-.12.54.15.26.67 1.1 1.44 1.8 1 .87 1.8 1.14 2.07 1.27.26.13.4.1.56-.06l.8-.9c.2-.26.4-.2.6-.13l1.9.9c.26.13.43.2.5.3.05.1.05.6-.15 1.2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6" stroke-linecap="round"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m1.5 1.5 5 5.5-5 5.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></symbol>
+  <symbol id="i-x" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m2 2 8 8M10 2l-8 8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m2.5 6.2 2.3 2.3 4.7-5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 5.5h11M2.5 10.5h11"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+</svg>
+
+<!-- ===== Dynamic Island navigation ===== -->
+<div class="island-bar">
+  <nav class="island" id="island" aria-label="Navigazione principale">
+    <a class="island__brand" href="#top" aria-label="RLS Rental, torna all'inizio"><span class="mark">R</span>RLS Rental</a>
+    <div class="island__status" aria-live="polite"><span class="pulse"></span><b id="islandStatus">3 autisti disponibili ora · Roma</b></div>
+    <div class="island__links"><div>
+      <a href="#flotta">Flotta</a>
+      <a href="#autista">Con autista</a>
+      <a href="#esperienza">Esperienza</a>
+      <a href="#faq">Domande</a>
+      <a href="#contatti">Contatti</a>
+    </div></div>
+    <button class="island__menu" id="islandMenu" aria-label="Apri menu" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+    <button class="btn btn-primary" data-open-sheet="berlina">Prenota</button>
+  </nav>
+</div>
+
+<main id="top">
+  <!-- ===== Hero ===== -->
+  <header class="hero" data-status="3 autisti disponibili ora · Roma">
+    <div class="hero__media"><img src="img/hero.jpg" alt="Berlina di lusso nera in uno studio buio, con la luce che disegna il profilo della carrozzeria" fetchpriority="high"></div>
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <span class="eyebrow rise">Noleggio luxury · Con autista · Roma</span>
+        <h1 class="large-title rise d1">Arrivare<br>è <span>un'arte.</span></h1>
+        <p class="lead rise d2">Berline executive, SUV e gran turismo da guidare in libertà, oppure con un autista professionista che conosce ogni strada di Roma. Consegna dove sei, a qualsiasi ora.</p>
+        <div class="hero__actions rise d3">
+          <button class="btn btn-primary" data-open-sheet="berlina">Prenota ora</button>
+          <a class="btn btn-glass" href="#flotta">Scopri la flotta</a>
+        </div>
+      </div>
+
+      <form class="booker" id="booker" onsubmit="return false">
+        <div class="booker__top">
+          <div class="seg" role="group" aria-label="Tipo di servizio" data-seg="service">
+            <span class="seg__thumb"></span>
+            <button type="button" aria-pressed="true" data-value="rent">Noleggio</button>
+            <button type="button" aria-pressed="false" data-value="autista">Con autista</button>
+          </div>
+          <span class="booker__note"><svg width="16" height="16"><use href="#i-shield"/></svg>Cancellazione gratuita fino a 48 ore prima</span>
+        </div>
+        <div class="fields" data-group="rent">
+          <div class="field"><label for="b-where">Consegna a</label>
+            <select id="b-where"><option>Roma Centro · in hotel</option><option>Aeroporto Fiumicino (FCO)</option><option>Aeroporto Ciampino (CIA)</option><option>Stazione Roma Termini</option><option>Porto di Civitavecchia</option></select></div>
+          <div class="field"><label for="b-from">Dal</label><input id="b-from" type="date" value="2026-09-18"></div>
+          <div class="field"><label for="b-to">Al</label><input id="b-to" type="date" value="2026-09-21"></div>
+          <div class="field"><label for="b-car">Vettura</label>
+            <select id="b-car"><option value="berlina">Berlina Executive</option><option value="suv">SUV Prestige</option><option value="sportiva">Gran Turismo</option></select></div>
+          <button class="btn btn-primary" type="button" id="b-go">Verifica disponibilità</button>
+        </div>
+        <div class="fields" data-group="autista" hidden>
+          <div class="field"><label for="n-from">Partenza</label>
+            <select id="n-from"><option>Aeroporto Fiumicino (FCO)</option><option>Roma Centro · in hotel</option><option>Aeroporto Ciampino (CIA)</option><option>Stazione Roma Termini</option><option>Porto di Civitavecchia</option></select></div>
+          <div class="field"><label for="n-to">Destinazione</label><input id="n-to" type="text" value="Hotel de Russie, Via del Babuino"></div>
+          <div class="field"><label for="n-date">Data e ora</label><input id="n-date" type="datetime-local" value="2026-09-18T14:30"></div>
+          <div class="field"><label for="n-car">Vettura</label>
+            <select id="n-car"><option value="berlina">Berlina Executive</option><option value="suv">SUV Prestige</option><option value="van">Van VIP · 7 posti</option></select></div>
+          <button class="btn btn-primary" type="button" id="n-go">Richiedi autista</button>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  <!-- ===== Facts ===== -->
+  <section class="facts" aria-label="Perché RLS Rental">
+    <ul class="wrap">
+      <li><svg><use href="#i-pin"/></svg><span><strong>Consegna in 60 minuti</strong>ovunque a Roma</span></li>
+      <li><svg><use href="#i-lang"/></svg><span><strong>Autisti bilingue</strong>italiano e inglese, in divisa</span></li>
+      <li><svg><use href="#i-shield"/></svg><span><strong>Kasko inclusa</strong>franchigia riducibile</span></li>
+      <li><svg><use href="#i-clock"/></svg><span><strong>Assistenza 24/7</strong>una persona, non un bot</span></li>
+    </ul>
+  </section>
+
+  <!-- ===== Fleet ===== -->
+  <section class="section" id="flotta" data-status="La flotta · 4 categorie">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow">La flotta</span>
+          <h2 class="title-2">Scegli come vuoi muoverti.</h2>
+          <p class="lead">Ogni vettura ha meno di 24 mesi, viene preparata a mano prima di ogni consegna e arriva con il pieno.</p>
+        </div>
+        <div class="chips" role="group" aria-label="Filtra per categoria">
+          <button class="chip" aria-pressed="true" data-filter="all">Tutte</button>
+          <button class="chip" aria-pressed="false" data-filter="self">Guida libera</button>
+          <button class="chip" aria-pressed="false" data-filter="driver">Con autista</button>
+        </div>
+      </div>
+
+      <div class="rail" id="rail">
+        <button class="car" data-car="berlina" data-modes="self driver">
+          <div class="car__img"><img src="img/fleet-berlina.jpg" alt="Berlina executive nera" loading="lazy"><span class="car__badge">La più richiesta</span></div>
+          <div class="car__body">
+            <div><h3 class="car__name">Berlina Executive</h3><p class="car__like">tipo Mercedes-Benz Classe S o similare</p></div>
+            <div class="specs"><span><svg><use href="#i-seat"/></svg>4 posti</span><span><svg><use href="#i-bag"/></svg>3 bagagli</span><span><svg><use href="#i-cap"/></svg>Autista o guida libera</span></div>
+            <div class="car__foot"><span class="price tnum">da <b>€690</b> / giorno</span><span class="plus"><svg><use href="#i-plus"/></svg></span></div>
+          </div>
+        </button>
+        <button class="car" data-car="suv" data-modes="self driver">
+          <div class="car__img"><img src="img/fleet-suv.jpg" alt="SUV di lusso grigio antracite" loading="lazy"><span class="car__badge">4x4 · 5 posti</span></div>
+          <div class="car__body">
+            <div><h3 class="car__name">SUV Prestige</h3><p class="car__like">tipo Range Rover o similare</p></div>
+            <div class="specs"><span><svg><use href="#i-seat"/></svg>5 posti</span><span><svg><use href="#i-bag"/></svg>4 bagagli</span><span><svg><use href="#i-cap"/></svg>Autista o guida libera</span></div>
+            <div class="car__foot"><span class="price tnum">da <b>€790</b> / giorno</span><span class="plus"><svg><use href="#i-plus"/></svg></span></div>
+          </div>
+        </button>
+        <button class="car" data-car="sportiva" data-modes="self">
+          <div class="car__img"><img src="img/fleet-sportiva.jpg" alt="Coupé gran turismo blu notte" loading="lazy"><span class="car__badge">Solo guida libera</span></div>
+          <div class="car__body">
+            <div><h3 class="car__name">Gran Turismo</h3><p class="car__like">tipo Porsche 911 o similare</p></div>
+            <div class="specs"><span><svg><use href="#i-seat"/></svg>2+2 posti</span><span><svg><use href="#i-bag"/></svg>2 bagagli</span><span><svg><use href="#i-gear"/></svg>Automatico</span></div>
+            <div class="car__foot"><span class="price tnum">da <b>€990</b> / giorno</span><span class="plus"><svg><use href="#i-plus"/></svg></span></div>
+          </div>
+        </button>
+        <button class="car" data-car="van" data-modes="driver">
+          <div class="car__img"><img src="img/fleet-van.jpg" alt="Van VIP nero" loading="lazy"><span class="car__badge">Solo con autista</span></div>
+          <div class="car__body">
+            <div><h3 class="car__name">Van VIP</h3><p class="car__like">tipo Mercedes-Benz Classe V o similare</p></div>
+            <div class="specs"><span><svg><use href="#i-seat"/></svg>7 posti</span><span><svg><use href="#i-bag"/></svg>7 bagagli</span><span><svg><use href="#i-cap"/></svg>Con autista</span></div>
+            <div class="car__foot"><span class="price tnum">da <b>€110</b> / ora</span><span class="plus"><svg><use href="#i-plus"/></svg></span></div>
+          </div>
+        </button>
+      </div>
+      <p class="rail-note">Prezzi indicativi IVA inclusa, 300 km al giorno compresi. Scorri per vedere tutta la flotta.</p>
+    </div>
+  </section>
+
+  <!-- ===== Con autista ===== -->
+  <section class="section" id="autista" data-status="Con autista · Fiumicino → Centro ~45 min" style="padding-top:0">
+    <div class="wrap autista">
+      <div class="autista__media">
+        <img src="img/notte-roma.jpg" alt="Berlina nera ferma su asfalto bagnato di notte, con le luci della città sfocate sullo sfondo">
+        <div class="autista__live">
+          <span class="ic"><svg><use href="#i-plane"/></svg></span>
+          <span><small>Volo AZ 611 da New York · atterrato</small><strong>Il tuo autista ti aspetta agli arrivi</strong></span>
+          <span class="eta tnum"><small>Centro</small><strong>45 min</strong></span>
+        </div>
+      </div>
+      <div class="autista__copy">
+        <span class="eyebrow">Servizio con autista</span>
+        <h2 class="title-2">Con autista. Ovunque tu debba essere.</h2>
+        <p class="lead">Autisti professionisti, selezionati e formati per il servizio d'eccellenza: puntualità, discrezione, bottiglia d'acqua fresca e Wi‑Fi a bordo.</p>
+        <div class="list" role="list">
+          <button class="row" role="listitem" data-open-sheet="berlina" data-mode="autista">
+            <span class="sq"><svg><use href="#i-plane"/></svg></span>
+            <span class="t"><strong>Transfer aeroporti</strong><span>Fiumicino e Ciampino, monitoraggio del volo incluso</span></span>
+            <span class="v tnum">da €110</span><svg class="chev"><use href="#i-chev"/></svg>
+          </button>
+          <button class="row" role="listitem" data-open-sheet="berlina" data-mode="autista">
+            <span class="sq"><svg><use href="#i-brief"/></svg></span>
+            <span class="t"><strong>Business e roadshow</strong><span>Autista a disposizione per incontri e congressi</span></span>
+            <span class="v tnum">da €85/h</span><svg class="chev"><use href="#i-chev"/></svg>
+          </button>
+          <button class="row" role="listitem" data-open-sheet="van" data-mode="autista">
+            <span class="sq"><svg><use href="#i-rings"/></svg></span>
+            <span class="t"><strong>Matrimoni ed eventi</strong><span>Vetture addobbate, coordinamento con il wedding planner</span></span>
+            <span class="v">su misura</span><svg class="chev"><use href="#i-chev"/></svg>
+          </button>
+          <button class="row" role="listitem" data-open-sheet="suv" data-mode="autista">
+            <span class="sq"><svg><use href="#i-route"/></svg></span>
+            <span class="t"><strong>Tour e lunghe tratte</strong><span>Costiera Amalfitana, Toscana, Firenze, Napoli</span></span>
+            <span class="v tnum">da €2,4/km</span><svg class="chev"><use href="#i-chev"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Experience (widgets) ===== -->
+  <section class="section" id="esperienza" data-status="Esperienza · consegna dove sei" style="padding-top:0">
+    <div class="wrap">
+      <div class="section__head"><div>
+        <span class="eyebrow">L'esperienza RLS Rental</span>
+        <h2 class="title-2">Ogni dettaglio, curato prima che tu lo chieda.</h2>
+      </div></div>
+      <div class="bento">
+        <article class="w w-detail">
+          <img src="img/detail.jpg" alt="Dettaglio del cerchio in lega e della firma luminosa anteriore">
+          <div class="cap"><span class="w-label">Preparazione</span><h3>Detailing a mano prima di ogni consegna.</h3><p>Interni igienizzati, carrozzeria lucidata, pieno fatto. Controllo in 42 punti firmato dal tecnico.</p></div>
+        </article>
+        <article class="w w-steps">
+          <span class="w-label">Come funziona</span>
+          <h3>Tre passaggi, zero code al banco.</h3>
+          <ol class="steps">
+            <li><strong>Richiedi</strong>Scegli vettura e date online o su WhatsApp.</li>
+            <li><strong>Conferma</strong>Ti rispondiamo entro 15 minuti con il preventivo.</li>
+            <li><strong>Parti</strong>Consegniamo le chiavi in hotel, a casa o in aeroporto.</li>
+          </ol>
+        </article>
+        <article class="w w-green">
+          <span class="w-label"><i></i>Sempre attivi</span>
+          <h3>Assistenza 24/7</h3>
+          <p>Un numero diretto, anche alle 3 di notte.</p>
+          <div class="big tnum">24<small>/7</small></div>
+        </article>
+        <article class="w">
+          <span class="w-label"><svg width="13" height="13"><use href="#i-plane"/></svg>Aeroporto</span>
+          <h3>Seguiamo il tuo volo</h3>
+          <p>Se atterri in ritardo, l'autista aspetta. Senza costi.</p>
+          <div class="flight tnum"><span>JFK</span><span class="track"><i></i><svg><use href="#i-plane"/></svg></span><span>FCO</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section" id="faq" data-status="Domande frequenti" style="padding-top:0">
+    <div class="wrap faq">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span class="eyebrow">Domande frequenti</span>
+        <h2 class="title-2">Tutto chiaro, prima di partire.</h2>
+        <p class="lead">Non trovi la risposta? Scrivici su WhatsApp: rispondiamo in pochi minuti.</p>
+      </div>
+      <div class="list">
+        <details open><summary>Quali requisiti servono per il noleggio?<svg><use href="#i-chev"/></svg></summary><p>Età minima 25 anni, patente valida da almeno 3 anni e una carta di credito intestata al conducente per il deposito cauzionale. Per i conducenti extra UE è richiesta anche la patente internazionale.</p></details>
+        <details><summary>Quanto è il deposito cauzionale?<svg><use href="#i-chev"/></svg></summary><p>Dipende dalla categoria: da €2.000 per le berline a €5.000 per le gran turismo. È una pre-autorizzazione sulla carta, sbloccata alla riconsegna del veicolo.</p></details>
+        <details><summary>Quanti chilometri sono inclusi?<svg><use href="#i-chev"/></svg></summary><p>300 km al giorno compresi nel prezzo. Il chilometro extra costa da €1,50 in base alla vettura; per viaggi lunghi prepariamo pacchetti dedicati.</p></details>
+        <details><summary>Consegnate a domicilio o in aeroporto?<svg><use href="#i-chev"/></svg></summary><p>Sì. La consegna a Roma entro il Grande Raccordo Anulare è gratuita per noleggi di almeno 2 giorni. Fiumicino, Ciampino e Civitavecchia hanno un supplemento fisso.</p></details>
+        <details><summary>Posso cancellare la prenotazione?<svg><use href="#i-chev"/></svg></summary><p>La cancellazione è gratuita fino a 48 ore prima del ritiro. Dopo, tratteniamo il 30% dell'importo per coprire la preparazione della vettura.</p></details>
+        <details><summary>Chi sono i vostri autisti?<svg><use href="#i-chev"/></svg></summary><p>Autisti professionisti, bilingue e selezionati per il servizio di alto livello, con copertura assicurativa per il trasporto passeggeri. Emettiamo fattura per aziende e agenzie.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="section" id="contatti" data-status="Contatti · rispondiamo in 15 min" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <span class="eyebrow">Prenota</span>
+          <h2 class="large-title" style="font-size:clamp(38px,5vw,68px)">La tua auto è pronta.<br><span class="muted">Tu dove sei?</span></h2>
+          <p class="lead">Via del Corso, Roma · Showroom su appuntamento</p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn-primary" href="#" data-wa><span><svg><use href="#i-chat"/></svg>Scrivi su WhatsApp</span><small>~15 min</small></a>
+          <a class="btn btn-glass" href="tel:+393931001284"><span><svg><use href="#i-phone"/></svg>+39 393 100 1284</span><small>24/7</small></a>
+          <a class="btn btn-glass" href="mailto:Rlsprojectsrl@gmail.com"><span><svg><use href="#i-mail"/></svg>Rlsprojectsrl@gmail.com</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 RLS Rental · P.IVA 00000000000</span>
+    <nav aria-label="Note legali"><a href="#">Privacy</a><a href="#">Cookie</a><a href="#">Condizioni di noleggio</a></nav>
+  </div>
+</footer>
+
+<!-- ===== Booking sheet ===== -->
+<div class="scrim" id="scrim" hidden></div>
+<section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="grabber" id="grabber"></div>
+  <div class="sheet__head">
+    <h2 id="sheetTitle">Richiesta di prenotazione</h2>
+    <button class="x" id="sheetClose" aria-label="Chiudi"><svg><use href="#i-x"/></svg></button>
+  </div>
+  <div class="sheet__car"><img id="sCarImg" src="img/fleet-berlina.jpg" alt=""><div><strong id="sCarName">Berlina Executive</strong><span id="sCarLike">tipo Mercedes-Benz Classe S o similare</span></div></div>
+  <div class="seg" role="group" aria-label="Tipo di servizio" data-seg="sheet" style="display:grid;width:100%">
+    <span class="seg__thumb"></span>
+    <button type="button" aria-pressed="true" data-value="rent">Noleggio</button>
+    <button type="button" aria-pressed="false" data-value="autista">Con autista</button>
+  </div>
+  <div class="form-list" data-sgroup="rent">
+    <div class="form-row"><label for="s-from">Ritiro</label><input id="s-from" type="date" value="2026-09-18"></div>
+    <div class="form-row"><label for="s-to">Riconsegna</label><input id="s-to" type="date" value="2026-09-21"></div>
+    <div class="form-row"><label for="s-where">Consegna a</label><select id="s-where"><option>Roma Centro · in hotel</option><option>Aeroporto Fiumicino (FCO)</option><option>Aeroporto Ciampino (CIA)</option><option>Stazione Roma Termini</option></select></div>
+  </div>
+  <div class="form-list" data-sgroup="autista" hidden>
+    <div class="form-row"><label for="s-date">Data e ora</label><input id="s-date" type="datetime-local" value="2026-09-18T14:30"></div>
+    <div class="form-row"><label for="s-hours">Ore a disposizione</label><select id="s-hours"><option value="3">3 ore</option><option value="4" selected>4 ore</option><option value="6">6 ore</option><option value="8">8 ore · giornata</option></select></div>
+    <div class="form-row"><label for="s-pax">Passeggeri</label><select id="s-pax"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5–7</option></select></div>
+  </div>
+  <div class="total"><span id="sTotalLabel">Stima per 3 giorni</span><b class="tnum" id="sTotal">€2.070</b></div>
+  <a class="btn btn-primary" href="#" id="sSend" data-wa><svg><use href="#i-chat"/></svg>Invia richiesta su WhatsApp</a>
+  <p class="fineprint">Nessun addebito ora. Ricevi conferma e preventivo definitivo entro 15 minuti.</p>
+</section>
+
+<div class="toast" id="toast" role="status"><i><svg><use href="#i-check"/></svg></i><span id="toastText">Richiesta pronta</span></div>
+
+<script>
+(function(){
+  const CARS = {
+    berlina:{name:"Berlina Executive",like:"tipo Mercedes-Benz Classe S o similare",img:"img/fleet-berlina.jpg",day:690,hour:85,modes:["rent","autista"]},
+    suv:{name:"SUV Prestige",like:"tipo Range Rover o similare",img:"img/fleet-suv.jpg",day:790,hour:95,modes:["rent","autista"]},
+    sportiva:{name:"Gran Turismo",like:"tipo Porsche 911 o similare",img:"img/fleet-sportiva.jpg",day:990,hour:null,modes:["rent"]},
+    van:{name:"Van VIP",like:"tipo Mercedes-Benz Classe V o similare",img:"img/fleet-van.jpg",day:null,hour:110,modes:["autista"]}
+  };
+  const WA = "393931001284"; // WhatsApp del cliente
+  const eur = n => "€" + n.toLocaleString("it-IT");
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+
+  /* segmented controls */
+  function segInit(seg, onChange){
+    const btns = $$("button", seg), thumb = $(".seg__thumb", seg);
+    function place(){
+      const on = btns.find(b => b.getAttribute("aria-pressed")==="true") || btns[0];
+      thumb.style.width = on.offsetWidth + "px";
+      thumb.style.transform = "translateX(" + (on.offsetLeft - 2) + "px)";
+    }
+    btns.forEach(b => b.addEventListener("click", () => set(b.dataset.value)));
+    function set(v){
+      btns.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.value===v)));
+      place(); onChange && onChange(v);
+    }
+    window.addEventListener("resize", place);
+    requestAnimationFrame(place);
+    return {set, place, get:()=> (btns.find(b=>b.getAttribute("aria-pressed")==="true")||btns[0]).dataset.value, btns};
+  }
+
+  const heroSeg = segInit($('[data-seg="service"]'), v => {
+    $$('#booker [data-group]').forEach(g => g.hidden = g.dataset.group !== v);
+  });
+
+  /* island */
+  const island = $("#island"), menu = $("#islandMenu"), status = $("#islandStatus");
+  menu.addEventListener("click", () => {
+    const open = island.classList.toggle("is-open");
+    menu.setAttribute("aria-expanded", String(open));
+  });
+  $$(".island__links a").forEach(a => a.addEventListener("click", () => { island.classList.remove("is-open"); menu.setAttribute("aria-expanded","false"); }));
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting && e.target.dataset.status) status.textContent = e.target.dataset.status; });
+    }, {rootMargin:"-45% 0px -50% 0px"});
+    $$("[data-status]").forEach(s => io.observe(s));
+  }
+
+  /* fleet filters */
+  $$(".chip").forEach(c => c.addEventListener("click", () => {
+    $$(".chip").forEach(x => x.setAttribute("aria-pressed", String(x===c)));
+    const f = c.dataset.filter;
+    $$("#rail .car").forEach(card => { card.hidden = f!=="all" && !card.dataset.modes.split(" ").includes(f); });
+    $("#rail").scrollTo({left:0, behavior:"smooth"});
+  }));
+
+  /* sheet */
+  const sheet = $("#sheet"), scrim = $("#scrim");
+  let current = "berlina";
+  const sheetSeg = segInit($('[data-seg="sheet"]'), v => { $$("[data-sgroup]").forEach(g => g.hidden = g.dataset.sgroup !== v); update(); });
+
+  function days(){
+    const a = new Date($("#s-from").value), b = new Date($("#s-to").value);
+    const d = Math.round((b - a) / 864e5);
+    return isFinite(d) && d > 0 ? d : 1;
+  }
+  function update(){
+    const car = CARS[current], mode = sheetSeg.get();
+    sheetSeg.btns.forEach(b => { b.disabled = !car.modes.includes(b.dataset.value); b.style.opacity = b.disabled ? .35 : 1; });
+    let label, total;
+    if (mode === "rent"){ const d = days(); label = "Stima per " + d + (d===1?" giorno":" giorni"); total = d * car.day; }
+    else { const h = +$("#s-hours").value; label = "Stima per " + h + " ore con autista"; total = h * car.hour; }
+    $("#sTotalLabel").textContent = label;
+    $("#sTotal").textContent = eur(total);
+    const msg = mode === "rent"
+      ? `Buongiorno, vorrei noleggiare: ${car.name} dal ${$("#s-from").value} al ${$("#s-to").value}, consegna a ${$("#s-where").value}.`
+      : `Buongiorno, vorrei un servizio con autista: ${car.name}, ${$("#s-date").value.replace("T"," ore ")}, ${$("#s-hours").value} ore, ${$("#s-pax").value} passeggeri.`;
+    $("#sSend").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+  }
+  ["s-from","s-to","s-where","s-date","s-hours","s-pax"].forEach(id => $("#"+id).addEventListener("change", update));
+
+  let lastFocus = null;
+  function openSheet(key, mode){
+    current = CARS[key] ? key : "berlina";
+    const car = CARS[current];
+    $("#sCarImg").src = car.img; $("#sCarName").textContent = car.name; $("#sCarLike").textContent = car.like;
+    let m = mode || heroSeg.get();
+    if (!car.modes.includes(m)) m = car.modes[0];
+    lastFocus = document.activeElement;
+    scrim.hidden = false; sheet.hidden = false;
+    requestAnimationFrame(() => { scrim.classList.add("show"); sheet.classList.add("show"); sheetSeg.set(m); $("#sheetClose").focus({preventScroll:true}); });
+    document.body.style.overflow = "hidden";
+  }
+  function closeSheet(){
+    scrim.classList.remove("show"); sheet.classList.remove("show"); sheet.style.transform = "";
+    document.body.style.overflow = "";
+    setTimeout(() => { scrim.hidden = true; sheet.hidden = true; }, 450);
+    lastFocus && lastFocus.focus && lastFocus.focus({preventScroll:true});
+  }
+  $$("[data-open-sheet]").forEach(b => b.addEventListener("click", () => openSheet(b.dataset.openSheet, b.dataset.mode)));
+  $$("#rail .car").forEach(c => c.addEventListener("click", () => openSheet(c.dataset.car)));
+  $("#sheetClose").addEventListener("click", closeSheet);
+  scrim.addEventListener("click", closeSheet);
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !sheet.hidden) closeSheet(); });
+
+  // swipe down to dismiss
+  let y0 = null;
+  $("#grabber").addEventListener("pointerdown", e => { y0 = e.clientY; sheet.style.transition = "none"; e.target.setPointerCapture(e.pointerId); });
+  $("#grabber").addEventListener("pointermove", e => { if (y0===null) return; const dy = Math.max(0, e.clientY - y0); sheet.style.transform = `translate(-50%, ${dy}px)`; });
+  $("#grabber").addEventListener("pointerup", e => { if (y0===null) return; const dy = e.clientY - y0; y0 = null; sheet.style.transition = ""; if (dy > 110) closeSheet(); else sheet.style.transform = ""; });
+
+  // hero widget -> sheet with its values
+  $("#b-go").addEventListener("click", () => {
+    $("#s-from").value = $("#b-from").value; $("#s-to").value = $("#b-to").value;
+    const w = $("#b-where").value; $$("#s-where option").forEach(o => o.selected = o.text === w);
+    openSheet($("#b-car").value, "rent");
+  });
+  $("#n-go").addEventListener("click", () => { $("#s-date").value = $("#n-date").value; openSheet($("#n-car").value, "autista"); });
+
+  // toast on send
+  const toast = $("#toast");
+  $$("[data-wa]").forEach(a => a.addEventListener("click", e => {
+    if (a.getAttribute("href") === "#"){ e.preventDefault(); a.href = "https://wa.me/" + WA; }
+    $("#toastText").textContent = "Apertura di WhatsApp…";
+    toast.classList.add("show"); setTimeout(() => toast.classList.remove("show"), 2200);
+  }));
+  $$('[data-wa]').forEach(a => { if (a.getAttribute("href")==="#" && a.id!=="sSend") a.href = "https://wa.me/" + WA; });
+  $$('[data-wa]').forEach(a => { a.target = "_blank"; a.rel = "noopener"; });
+
+  update();
+})();
+</script>
+
+</body>
+</html>

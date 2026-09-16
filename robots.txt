@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rlsrental.github.io/sitemap.xml
